@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "35215979569",
+    "firebase_url": "https://medigo-bbsr.firebaseio.com",
+    "project_id": "medigo-bbsr",
+    "storage_bucket": "medigo-bbsr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35215979569:android:f0c50d7f793a863943d110",
+        "android_client_info": {
+          "package_name": "com.complexity.medigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35215979569-nrikl98kcbi0eoepi0vap7k33j9vj3bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.complexity.medigo",
+            "certificate_hash": "c08aad646aec3fe5a24c2608255775b5ec308030"
+          }
+        },
+        {
+          "client_id": "35215979569-kvqgg1vqgr2hk9ntakj9fgfn1f56rs20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.complexity.medigo",
+            "certificate_hash": "540bbe4b85d04fecdef1578d1402194812efefa4"
+          }
+        },
+        {
+          "client_id": "35215979569-9apdc8enm3v4ijfimjvvig6pa1chgcc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4RWiWW6odHGukN0b3OTeJCTS28Cbqmww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35215979569-9apdc8enm3v4ijfimjvvig6pa1chgcc5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35215979569:android:d1ead5d9e0cbb3f543d110",
+        "android_client_info": {
+          "package_name": "com.complexity.medigo_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35215979569-tstvb1agf7uaa2umblffdna7u4s3kh75.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.complexity.medigo_doctor",
+            "certificate_hash": "c08aad646aec3fe5a24c2608255775b5ec308030"
+          }
+        },
+        {
+          "client_id": "35215979569-9apdc8enm3v4ijfimjvvig6pa1chgcc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4RWiWW6odHGukN0b3OTeJCTS28Cbqmww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35215979569-9apdc8enm3v4ijfimjvvig6pa1chgcc5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
