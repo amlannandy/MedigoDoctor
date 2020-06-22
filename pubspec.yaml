@@ -20,13 +20,16 @@ dependencies:
   fluttertoast: ^4.0.1
   flutter_svg: ^0.17.4
   geolocator: ^5.3.1
+  google_nav_bar: ^2.2.0
   image_picker: ^0.6.3+4
   intl: ^0.16.1
   line_icons: ^0.2.0
   path: ^1.6.4
   permission_handler: ^4.4.0+hotfix.2
   provider: ^4.0.4
+  share: ^0.6.4+3
   uuid: 2.0.4
+  flutter_webview_plugin: ^0.3.11
 
 dev_dependencies:
   flutter_test:

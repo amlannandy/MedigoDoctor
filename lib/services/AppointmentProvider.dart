@@ -2,7 +2,7 @@ import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../screens/VideoCallScreen.dart';
+import '../screens/ChatScreen/screens/VideoCallScreen.dart';
 
 class AppointmentProvider {
 
@@ -17,6 +17,17 @@ class AppointmentProvider {
       'senderId' : userId,
       'message' : message,
       'timestamp' : Timestamp.now(),
+    });
+    _firestore.collection('appointments').document(appointmentId).updateData({
+      'lastMessage' : message,
+      'lastTimestamp' : Timestamp.now(),
+      'doctorLastSeen' : Timestamp.now(),
+    });
+  }
+
+  static void updateLastSeen(String appointmentId) {
+    Firestore.instance.collection('appointments').document(appointmentId).updateData({
+      'doctorLastSeen' : Timestamp.now(),
     });
   }
 

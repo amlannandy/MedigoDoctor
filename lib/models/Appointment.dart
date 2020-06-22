@@ -9,7 +9,16 @@ class Appointment {
   final String doctorId;
   final String userId;
   final List<Message> messages;
-  final Timestamp time;
+  final String time;
+  final String date;
+  final String channelId;
+  final bool videoCallActive;
+  final bool audioCallActive;
+  final String lastMessage;
+  final Timestamp lastTimestamp;
+  final bool unread;
+  final Timestamp userLastSeen;
+  final Timestamp doctorLastSeen;
 
   const Appointment({
     @required this.id,
@@ -17,6 +26,15 @@ class Appointment {
     @required this.userId,
     this.messages,
     this.time,
+    this.channelId,
+    this.videoCallActive,
+    this.audioCallActive,
+    this.lastMessage,
+    this.lastTimestamp,
+    this.unread,
+    this.userLastSeen,
+    this.doctorLastSeen,
+    this.date,
   });
 
   factory Appointment.fromFirestore(DocumentSnapshot snapshot) {
@@ -28,7 +46,16 @@ class Appointment {
       doctorId: data['doctorId'] ?? null,
       userId: data['userId'] ?? null,
       messages: data['messages'] ?? null,
-      time: data['time'] ?? Timestamp.now(),
+      time: data['time'] ?? null,
+      channelId: data['channelId'] ?? null,
+      videoCallActive: data['videoCallActive'] ?? false,
+      audioCallActive: data['audioCallActive'] ?? false,
+      lastMessage: data['lastMessage'] ?? 'Send a message...',
+      lastTimestamp: data['lastTimestamp'] ?? data['startTime'],
+      unread: data['unread'] ?? false,
+      userLastSeen: data['userLastSeen'] ?? Timestamp.now(),
+      doctorLastSeen: data['doctorLastSeen'] ?? Timestamp.now(),
+      date: data['date'] ?? null,
     );
     return appointment;
   }

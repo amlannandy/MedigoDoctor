@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import './screens/InitScreen.dart';
-import './screens/LoginScreen.dart';
-import './screens/ParentScreen.dart';
-import './screens/ProfileScreen.dart';
-import './screens/UserInfoScreen.dart';
-import './screens/PasswordResetScreen.dart';
-import './screens/EmailVerificationScreen.dart';
-import './screens/VerificationPendingScreen.dart';
+import 'screens/InitScreen.dart';
+import 'screens/ParentScreen/ParentScreen.dart';
+import 'screens/ProfileScreen/ProfileScreen.dart';
+import 'screens/MenuScreen/screens/WebViewScreen.dart';
+import 'screens/RegistrationScreens/screens/LoginScreen.dart';
+import 'screens/ScheduleScreen/screens/AvailibiltyScreen.dart';
+import 'screens/RegistrationScreens/screens/UserInfoScreen.dart';
+import 'screens/RegistrationScreens/screens/PasswordResetScreen.dart';
+import 'screens/RegistrationScreens/screens/EmailVerificationScreen.dart';
+import 'screens/RegistrationScreens/screens/VerificationPendingScreen.dart';
 
 void main() => runApp(MedigoDoctorApp());
 
@@ -42,8 +44,10 @@ class MedigoDoctorApp extends StatelessWidget {
           '/userinfo' : (ctx) => UserInfoScreen(),
           '/parent' : (ctx) => ParentScreen(),
           '/profile' : (ctx) => ProfileScreen(),
-          '/emailverification' : (ctx) => EmailVerificationScreen(),
+          '/webview' : (ctx) => WebViewScreen(),
+          '/availibility' : (ctx) => AvailibiltyScreen(),
           '/passwordreset' : (ctx) => PasswordResetScreen(),
+          '/emailverification' : (ctx) => EmailVerificationScreen(),
           '/verificationpending' : (ctx) => VerifiationPendingScreen(),
         },
       ),
