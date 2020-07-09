@@ -9,12 +9,13 @@ class AppointmentProvider {
   static Firestore _firestore = Firestore.instance;
   static final uuid = Uuid();
 
-  static void sendMessage(String appointmentId, String userId, String message) {
+  static void sendMessage(String appointmentId, String userId, String patientId, String message) {
     if (message.isEmpty) {
       return;
     }
     _firestore.collection('appointments').document(appointmentId).collection('messages').document(Timestamp.now().toString()).setData({
       'senderId' : userId,
+      'receiverId' : patientId,
       'message' : message,
       'timestamp' : Timestamp.now(),
     });

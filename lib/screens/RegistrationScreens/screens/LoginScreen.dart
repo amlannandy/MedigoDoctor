@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../local_widgets/CustomTextField.dart';
+import '../../../widgets/CustomTextField.dart';
 import '../local_widgets/PasswordField.dart';
 import '../../../widgets/PrimaryButton.dart';
 import '../../../services/FirebaseAuthenticationService.dart';

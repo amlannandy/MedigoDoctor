@@ -7,7 +7,7 @@ import '../../../widgets/PrimaryButton.dart';
 import '../../../services/UserDatabaseService.dart';
 import '../../../services/FirebaseAuthenticationService.dart';
 
-class VerifiationPendingScreen extends StatelessWidget {
+class VerificationPendingScreen extends StatelessWidget {
 
   final FirebaseAuthenticationService _auth = FirebaseAuthenticationService();
   final UserDatabaseService userDatabaseService = UserDatabaseService();

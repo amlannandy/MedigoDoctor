@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../local_widgets/FieldDropdownField.dart';
 import '../../../widgets/PrimaryButton.dart';
-import '../local_widgets/CustomTextField.dart';
+import '../../../widgets/CustomTextField.dart';
 import '../local_widgets/LightIconButton.dart';
 import '../../../services/UserInfoProvider.dart';
 
@@ -28,6 +29,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   final _fieldController = TextEditingController();
   final _hospitalController = TextEditingController();
   final _cityController = TextEditingController();
+  final _experienceController = TextEditingController();
 
   @override
   void initState() {
@@ -51,60 +53,70 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     }
   }
 
+  void setFieldControllerValue(String value) {
+    setState(() {
+      _fieldController.text = value;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              pictureContainer(context),
-              SizedBox(height: 20),
-              CustomTextField(
-                icon: LineIcons.user,
-                labelText: "Your Name",
-                controller: _nameController,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            pictureContainer(context),
+            SizedBox(height: 20),
+            CustomTextField(
+              icon: LineIcons.user,
+              labelText: "Your Name",
+              controller: _nameController,
+            ),
+            CustomTextField(
+              icon: LineIcons.sort_numeric_asc,
+              labelText: "Your Age",
+              controller: _ageController,
+              numeric: true,
+            ),
+            FieldDropdownField(
+              setFieldControllerValue, 
+              _fieldController,
+            ),
+            CustomTextField(
+              icon: LineIcons.list_alt,
+              labelText: "Years of Experience",
+              controller: _experienceController,
+              numeric: true,
+            ),
+            CustomTextField(
+              icon: LineIcons.hospital_o,
+              labelText: "Your Hospital",
+              controller: _hospitalController,
+            ),
+            CustomTextField(
+              icon: LineIcons.home,
+              labelText: "Your City",
+              controller: _cityController,
+            ),
+            PrimaryButton(
+              text: "SUBMIT",
+              press: () => UserInfoProvider.uploadUserInfo(
+                context: context,
+                name: _nameController.text,
+                age: _ageController.text,
+                field: _fieldController.text,
+                hospital: _hospitalController.text,
+                location: _cityController.text,
+                userPosition: _currentPosition,
+                experience: _experienceController.text,
               ),
-              CustomTextField(
-                icon: LineIcons.sort_numeric_asc,
-                labelText: "Your Age",
-                controller: _ageController,
-                numeric: true,
-              ),
-              CustomTextField(
-                icon: LineIcons.users,
-                labelText: "Your Field of Practice",
-                controller: _fieldController,
-              ),
-              CustomTextField(
-                icon: LineIcons.hospital_o,
-                labelText: "Your Hospital",
-                controller: _hospitalController,
-              ),
-              CustomTextField(
-                icon: LineIcons.home,
-                labelText: "Your City",
-                controller: _cityController,
-              ),
-              PrimaryButton(
-                text: "SUBMIT",
-                press: () => UserInfoProvider.uploadUserInfo(
-                  context: context,
-                  name: _nameController.text,
-                  age: _ageController.text,
-                  field: _fieldController.text,
-                  hospital: _hospitalController.text,
-                  location: _cityController.text,
-                  userPosition: _currentPosition,
-                ),
-                color: Theme.of(context).primaryColor,
-              )
-            ],
-          ),
-        ],
+              color: Theme.of(context).primaryColor,
+            ),
+            SizedBox(height: 20),
+          ],
+        ),
       )
     );
   }

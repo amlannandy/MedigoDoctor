@@ -19,13 +19,6 @@ class _ParentScreenState extends State<ParentScreen> {
   int _selectedIndex = 0;
   final _pageController = PageController(initialPage: 0);
 
-  Map<String, Widget> _pages = {
-    "Home" : HomeScreen(),
-    "Chats" : AppointmentsScreen(),
-    "Doctors" : ScheduleScreen(),
-    "Menu" : MenuScreen(),
-  };
-
   @override
   void dispose() {
     _pageController.dispose();
@@ -35,14 +28,21 @@ class _ParentScreenState extends State<ParentScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final userId = ModalRoute.of(context).settings.arguments;
+    final List routeData = ModalRoute.of(context).settings.arguments;
+    final userId = routeData[0];
+    final clinicId = routeData[1];
 
     return Scaffold(
       appBar: customAppBar(context, userId),
       body: PageView(
         onPageChanged: (index) => setState(() => _selectedIndex = index),
         controller: _pageController,
-        children: _pages.values.toList(),
+        children: [
+          HomeScreen(clinicId),
+          AppointmentsScreen(),
+          ScheduleScreen(),
+          MenuScreen(),
+        ],
       ),
       bottomNavigationBar: googleNavBar(context),
     );

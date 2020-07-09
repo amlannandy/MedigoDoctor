@@ -3,7 +3,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../../../services/AppointmentProvider.dart';
 
-Widget inputField({ BuildContext context, String userId, String appointmentId, TextEditingController controller }) {
+Widget inputField({ BuildContext context, String userId, String appointmentId, String patientId, TextEditingController controller }) {
   return Container(
     margin: EdgeInsets.all(10.0),
     decoration: BoxDecoration(
@@ -29,7 +29,7 @@ Widget inputField({ BuildContext context, String userId, String appointmentId, T
                 cursorColor: Colors.grey,
                 controller: controller,
                 onSubmitted: (message) {
-                  AppointmentProvider.sendMessage(appointmentId, userId, message);
+                  AppointmentProvider.sendMessage(appointmentId, userId, patientId, message);
                   controller.clear();
                 },
                 keyboardType: TextInputType.multiline,
@@ -52,7 +52,7 @@ Widget inputField({ BuildContext context, String userId, String appointmentId, T
         ),
         IconButton(
           onPressed: () {
-            AppointmentProvider.sendMessage(appointmentId, userId, controller.text);
+            AppointmentProvider.sendMessage(appointmentId, userId, patientId, controller.text);
             controller.clear();
           },
           icon: Icon(

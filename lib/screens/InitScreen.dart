@@ -17,6 +17,7 @@ class _InitScreenState extends State<InitScreen> {
   bool _redirect;
   String _redirectURL;
   String userId = "";
+  String clinicId = "";
 
   Future<bool> _checkAuthStatus(BuildContext ctx) async {
     try {
@@ -50,6 +51,7 @@ class _InitScreenState extends State<InitScreen> {
         _redirectURL = "/verificationpending";
         return true;
       }
+      clinicId = doctor.clinicId;
       _redirectURL = "/parent";
       _redirect = true;
       return true;
@@ -91,7 +93,7 @@ class _InitScreenState extends State<InitScreen> {
                   new Future.delayed(Duration(milliseconds: 500), () {
                     print("Redirect: $_redirect $_redirectURL  |");
                     if (_redirect) {
-                      Navigator.of(context).pushReplacementNamed(_redirectURL, arguments: userId);
+                      Navigator.of(context).pushReplacementNamed(_redirectURL, arguments: [userId, clinicId]);
                     }
                   });
                   return Container();

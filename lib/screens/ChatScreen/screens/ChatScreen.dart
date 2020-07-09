@@ -46,6 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
             appointmentId: widget.appointment.id,
             userId: widget.appointment.doctorId,
             controller: _textController,
+            patientId: widget.appointment.userId,
           ),
         ],
       ),

@@ -20,6 +20,7 @@ dependencies:
   fluttertoast: ^4.0.1
   flutter_svg: ^0.17.4
   geolocator: ^5.3.1
+  google_maps_flutter: ^0.5.28+1
   google_nav_bar: ^2.2.0
   image_picker: ^0.6.3+4
   intl: ^0.16.1

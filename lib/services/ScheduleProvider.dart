@@ -93,6 +93,8 @@ class ScheduleProvider {
       'endTime' : end,
       'doctorId' : user.uid,
       'date' : getFormattedDate(timestamp),
+      'doctorLastSeen' : Timestamp.now(),
+      'userLastSeen' : Timestamp.now(),
     });
     Fluttertoast.showToast(
       msg: 'Time slot created!',

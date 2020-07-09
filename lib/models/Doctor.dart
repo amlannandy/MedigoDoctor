@@ -13,8 +13,8 @@ class Doctor {
   final String hospital;
   final String city;
   final Position location;
-  bool isVerified;
-  bool isActive;
+  final String clinicId;
+  final bool isVerified;
 
   Doctor({
     @required this.userId,
@@ -26,7 +26,7 @@ class Doctor {
     @required this.hospital,
     @required this.city,
     @required this.location,
-    @required this.isActive,
+    @required this.clinicId,
     @required this.isVerified,
   });
 
@@ -44,7 +44,7 @@ class Doctor {
         latitude: data['location'].latitude,
         longitude: data['location'].longitude,
       ) ?? null,
-      isActive: data['isActive'] ?? false,
+      clinicId: data['clinicId'] ?? null,
       isVerified: data['isVerified'] ?? false,
     );
   }
@@ -66,7 +66,7 @@ class Doctor {
         latitude: data['location'].latitude,
         longitude: data['location'].longitude,
       ) ?? null,
-      isActive: data['isActive'] ?? false,
+      clinicId: data['clinicId'] ?? null,
       isVerified: data['isVerified'] ?? false,
     );
     return doctor;
