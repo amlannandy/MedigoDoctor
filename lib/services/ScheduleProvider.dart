@@ -66,9 +66,7 @@ class ScheduleProvider {
 
   static createAppointment({ BuildContext context, Timestamp timestamp, String timeSlot, TimeOfDay startTime, TimeOfDay endTime }) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-
     DateTime date = timestamp.toDate();
-
     DateTime startDate = new DateTime(
       date.year,
       date.month,
@@ -77,7 +75,6 @@ class ScheduleProvider {
       startTime.minute,
     );
     Timestamp start = Timestamp.fromDate(startDate);
-
     DateTime endDate = new DateTime(
       date.year,
       date.month,
@@ -86,8 +83,8 @@ class ScheduleProvider {
       endTime.minute,
     );
     Timestamp end = Timestamp.fromDate(endDate);
-
-    Firestore.instance.collection('appointments').document().setData({
+    String appointmentId = Firestore.instance.collection('appointments').document().documentID;
+    Firestore.instance.collection('appointments').document(appointmentId).setData({
       'time' : timeSlot,
       'startTime' : start,
       'endTime' : end,
@@ -95,6 +92,10 @@ class ScheduleProvider {
       'date' : getFormattedDate(timestamp),
       'doctorLastSeen' : Timestamp.now(),
       'userLastSeen' : Timestamp.now(),
+    });
+    Firestore.instance.collection('prescriptions').document(appointmentId).setData({
+      'doctorId' : user.uid,
+      'date' : getFormattedDate(timestamp),
     });
     Fluttertoast.showToast(
       msg: 'Time slot created!',

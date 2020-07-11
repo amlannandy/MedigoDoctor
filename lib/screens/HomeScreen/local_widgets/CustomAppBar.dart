@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget customAppBar(BuildContext context, String title) {
+Widget customAppBar(BuildContext context, String title, { Function popCall }) {
   return AppBar(
     elevation: 0,
     leading: IconButton(
@@ -8,7 +8,12 @@ Widget customAppBar(BuildContext context, String title) {
         Icons.arrow_back_ios,
         color: Colors.black.withOpacity(0.7),
       ),
-      onPressed: () => Navigator.of(context).pop()
+      onPressed: () {
+        if (popCall != null) {
+          popCall();
+        }
+        Navigator.of(context).pop();
+      }
     ),
     backgroundColor: Colors.white,
     centerTitle: true,

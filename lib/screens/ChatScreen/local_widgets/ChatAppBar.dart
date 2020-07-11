@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:medigo_doctor/screens/ChatScreen/screens/PrescriptionScreen.dart';
 
 import '../../../models/MedigoUser.dart';
 import '../../../services/UserDatabaseService.dart';
@@ -62,6 +63,32 @@ Widget chatAppBar(BuildContext context, String appointmentId, String patientId) 
           color: Colors.black.withOpacity(0.8),
         ),
         itemBuilder: (_) => [
+          PopupMenuItem(
+            child: InkWell(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => PrescriptionScreen(appointmentId))),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                width: double.infinity,
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      LineIcons.sticky_note,
+                      color: Colors.black.withOpacity(0.8),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Prescription",
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.8),
+                        fontFamily: 'Lato',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           PopupMenuItem(
             child: InkWell(
               onTap: () => AppointmentProvider.startAudioCall(context, appointmentId),

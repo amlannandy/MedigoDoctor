@@ -170,4 +170,10 @@ class AppointmentProvider {
     );
   }
 
+  static void updatePrescription(String appointmentId, String text) {
+    _firestore.collection('prescriptions').document(appointmentId).updateData({
+      'data': text
+    });
+  }
+
 }

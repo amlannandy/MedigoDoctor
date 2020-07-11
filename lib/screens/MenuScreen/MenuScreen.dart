@@ -34,19 +34,14 @@ class MenuScreen extends StatelessWidget {
       onPress: null,
     ),
     MenuItem(
+      title: 'Clinic History',
+      icon: LineIcons.hospital_o,
+      onPress: (context) => Navigator.of(context).pushNamed('/history'),
+    ),
+    MenuItem(
       title: 'Consultation History',
       icon: LineIcons.history,
-      onPress: () {},
-    ),
-    MenuItem(
-      title: 'MediLocker',
-      icon: LineIcons.lock,
-      onPress: () {},
-    ),
-    MenuItem(
-      title: 'Share with Friends',
-      icon: LineIcons.share,
-      onPress: shareHandler,
+      onPress: (context) => Navigator.of(context).pushNamed('/history'),
     ),
     MenuItem(
       title: 'Terms & Conditons',

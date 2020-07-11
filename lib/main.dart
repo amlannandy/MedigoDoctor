@@ -10,6 +10,7 @@ import 'screens/MenuScreen/screens/WebViewScreen.dart';
 import 'screens/RegistrationScreens/screens/LoginScreen.dart';
 import 'screens/ScheduleScreen/screens/AvailibiltyScreen.dart';
 import 'screens/RegistrationScreens/screens/UserInfoScreen.dart';
+import 'screens/MenuScreen/screens/AppointmentHistoryScreen.dart';
 import 'screens/RegistrationScreens/screens/PasswordResetScreen.dart';
 import 'screens/RegistrationScreens/screens/EmailVerificationScreen.dart';
 import 'screens/RegistrationScreens/screens/VerificationPendingScreen.dart';
@@ -51,6 +52,7 @@ class MedigoDoctorApp extends StatelessWidget {
           '/emailverification' : (ctx) => EmailVerificationScreen(),
           '/verificationpending' : (ctx) => VerificationPendingScreen(),
           '/addclinic' : (ctx) => AddClinicScreen(),
+          '/history' : (ctx) => AppointmentHistoryScreen(),
         },
       ),
     );

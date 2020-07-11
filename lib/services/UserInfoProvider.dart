@@ -41,9 +41,8 @@ class UserInfoProvider {
     Firestore.instance.collection('doctors').document(user.uid).setData({
       'name' : name,
       'age' : int.parse(age),
-      'phone' : user.phoneNumber,
       'field' : field,
-      'hospital' : field,
+      'hospital' : hospital,
       'city' : location,
       'imageUrl' : currentImageUrl.isEmpty ? "https://firebasestorage.googleapis.com/v0/b/medigo-bbsr.appspot.com/o/stock_assets%2Fdefault_doctor.png?alt=media&token=546af140-247e-4775-8e46-b79084ab817a" : currentImageUrl,
       'location' : GeoPoint(userPosition.latitude, userPosition.longitude),
