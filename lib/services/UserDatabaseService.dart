@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:async';
 
 import '../models/Doctor.dart';
 import '../models/Clinic.dart';
 import '../models/MedigoUser.dart';
 import '../models/Prescription.dart';
+import '../models/MedicalReport.dart';
 
 class UserDatabaseService {
   
@@ -56,6 +56,18 @@ class UserDatabaseService {
     DocumentSnapshot snapshot = await _db.collection('prescriptions').document(id).get();
     print(snapshot.data);
     return Prescription.fromFirestore(snapshot);
+  }
+
+  Stream<MedicalReport> streamMedicalReport(String id) {
+    return _db.collection('medicalreports').document(id).snapshots().map(
+      (snapshot) => MedicalReport.fromFirestore(snapshot)
+    );
+  }
+
+  Future<MedicalReport> getMedicalReport(String id) async {
+    DocumentSnapshot snapshot = await _db.collection('medicalreports').document(id).get();
+    print(snapshot.data);
+    return MedicalReport.fromFirestore(snapshot);
   }
 
 }

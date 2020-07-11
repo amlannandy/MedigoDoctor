@@ -30,6 +30,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   final _hospitalController = TextEditingController();
   final _cityController = TextEditingController();
   final _experienceController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   @override
   void initState() {
@@ -80,6 +81,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               controller: _ageController,
               numeric: true,
             ),
+            CustomTextField(
+              icon: LineIcons.phone,
+              labelText: "Your Phone",
+              controller: _phoneController,
+              numeric: true,
+            ),
             FieldDropdownField(
               setFieldControllerValue, 
               _fieldController,
@@ -111,6 +118,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 location: _cityController.text,
                 userPosition: _currentPosition,
                 experience: _experienceController.text,
+                phone: _phoneController.text,
               ),
               color: Theme.of(context).primaryColor,
             ),

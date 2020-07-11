@@ -16,7 +16,7 @@ class UserInfoProvider {
   static String currentImageUrl = "";
   static String clinicImageUrl = "";
 
-  static void uploadUserInfo({BuildContext context, String name, String age, String field, String hospital, String location, Position userPosition, String experience}) async {
+  static void uploadUserInfo({BuildContext context, String name, String age, String phone, String field, String hospital, String location, Position userPosition, String experience}) async {
     if (name.isEmpty || age.isEmpty || field.isEmpty || hospital.isEmpty || location.isEmpty || experience.isEmpty) {
       Fluttertoast.showToast(msg: "Please fill up all the fields");
       return;
@@ -47,6 +47,8 @@ class UserInfoProvider {
       'imageUrl' : currentImageUrl.isEmpty ? "https://firebasestorage.googleapis.com/v0/b/medigo-bbsr.appspot.com/o/stock_assets%2Fdefault_doctor.png?alt=media&token=546af140-247e-4775-8e46-b79084ab817a" : currentImageUrl,
       'location' : GeoPoint(userPosition.latitude, userPosition.longitude),
       'experience' : int.parse(experience),
+      'email' : user.email,
+      'phone' : phone,
     });
     Navigator.of(context).pushReplacementNamed('/init');
   }
@@ -140,8 +142,8 @@ class UserInfoProvider {
   }
 
 
-  static void updateUserInfo({String name, String age, String location}) async {
-    if (name.isEmpty || age.isEmpty || location.isEmpty) {
+  static void updateUserInfo({BuildContext context, String userId, String age, String hospital, String location, String experience}) async {
+    if ( age.isEmpty || hospital.isEmpty || location.isEmpty || experience.isEmpty) {
       Fluttertoast.showToast(msg: "Please fill up all the fields");
       return;
     }
@@ -159,12 +161,15 @@ class UserInfoProvider {
       Fluttertoast.showToast(msg: "Please enter a valid age");
     }
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    Firestore.instance.collection('users').document(user.uid).updateData({
-      'name' : name,
+    Firestore.instance.collection('doctors').document(user.uid).updateData({
       'age' : int.parse(age),
+      'hospital' : hospital,
       'city' : location,
+      'imageUrl' : currentImageUrl,
+      'experience' : int.parse(experience),
     });
     Fluttertoast.showToast(msg: "Profile updated", backgroundColor: Colors.green, textColor: Colors.white);
+    Navigator.of(context).pop();
   }
 
   static void showFieldDropdown(BuildContext context, Function callback) {

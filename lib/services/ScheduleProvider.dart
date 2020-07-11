@@ -97,6 +97,10 @@ class ScheduleProvider {
       'doctorId' : user.uid,
       'date' : getFormattedDate(timestamp),
     });
+    Firestore.instance.collection('medicalreports').document(appointmentId).setData({
+      'doctorId' : user.uid,
+      'date' : getFormattedDate(timestamp),
+    });
     Fluttertoast.showToast(
       msg: 'Time slot created!',
       backgroundColor: Colors.green,

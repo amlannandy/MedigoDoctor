@@ -81,6 +81,7 @@ class HistoryCard extends StatelessWidget {
         }
         final user = snapshot.data;
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Container(
               height: 60,

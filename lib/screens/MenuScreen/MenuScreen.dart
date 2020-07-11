@@ -31,7 +31,7 @@ class MenuScreen extends StatelessWidget {
     MenuItem(
       title: 'Edit Profile',
       icon: LineIcons.user,
-      onPress: null,
+      onPress: (context) => Navigator.of(context).pushNamed('/editprofile'),
     ),
     MenuItem(
       title: 'Clinic History',
