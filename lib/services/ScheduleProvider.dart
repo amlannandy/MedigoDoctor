@@ -3,8 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medigo_doctor/models/Doctor.dart';
+import 'package:medigo_doctor/services/UserDatabaseService.dart';
 
 class ScheduleProvider {
+
+  static final UserDatabaseService userDatabaseService = UserDatabaseService();
 
   static String getFormattedDate(Timestamp timestamp) {
     return DateFormat('dd-MM-yyyy').format(timestamp.toDate()).toString();
@@ -93,13 +97,16 @@ class ScheduleProvider {
       'doctorLastSeen' : Timestamp.now(),
       'userLastSeen' : Timestamp.now(),
     });
+    Doctor doctor = await userDatabaseService.getDoctor(user.uid);
     Firestore.instance.collection('prescriptions').document(appointmentId).setData({
       'doctorId' : user.uid,
       'date' : getFormattedDate(timestamp),
+      'doctorName' : doctor.name,
     });
     Firestore.instance.collection('medicalreports').document(appointmentId).setData({
       'doctorId' : user.uid,
       'date' : getFormattedDate(timestamp),
+      'doctorName' : doctor.name,
     });
     Fluttertoast.showToast(
       msg: 'Time slot created!',
